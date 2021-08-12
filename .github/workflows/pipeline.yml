@@ -34,3 +34,5 @@ jobs:
           heroku_app_name: "poke-dex-site" #Must be unique in Heroku
           heroku_email: "prana12@live.com"
           healthcheck: "https://poke-dex-site.herokuapp.com/health"
+          checkstring: "ok"
+          rollbackonhealthcheckfailed: true
