@@ -40,6 +40,8 @@ jobs:
           healthcheck: "https://poke-dex-site.herokuapp.com/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
+      - name: git checkout
+        uses: actions/checkout@v2
       - name: Bump version and push tag
         if: ${{ github.event_name == 'push' }}
         uses: anothrNick/github-tag-action@1.33.0
