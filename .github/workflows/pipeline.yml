@@ -73,7 +73,7 @@ jobs:
               {
                 attachments: [{
                   color: 'good', 
-                  text: `{process.env.AS_WORKFLOW} - ${{ job.status }}\nA new version is deployed with job {process.env.AS_JOB}(commit: ${process.env.AS_COMMIT}) of ${process.env.AS_REPO}@${process.env.AS_REF} by ${process.env.AS_AUTHOR} (Time used: ${process.env.AS_TOOK})`
+                  text: `${process.env.AS_WORKFLOW} - ${{ job.status }}\nA new version is deployed with job ${process.env.AS_JOB}(commit: ${process.env.AS_COMMIT}) of ${process.env.AS_REPO}@${process.env.AS_REF} by ${process.env.AS_AUTHOR} (Time used: ${process.env.AS_TOOK})`
                 }]
               }
         env:
