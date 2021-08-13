@@ -80,14 +80,16 @@ jobs:
         if: ${{ failure() && github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
         uses: 8398a7/action-slack@v3
         with:
-            status: custom
-            fields: workflow,job,commit,repo,ref,author,took
-            custom_payload: |
-              {
-                attachments: [{
-                  color: 'danger' 
-                  text: `${process.env.AS_WORKFLOW} failed: {process.env.AS_JOB} (${process.env.AS_COMMIT}) of ${process.env.AS_REPO}@${process.env.AS_REF} by ${process.env.AS_AUTHOR} ${{ job.status }} in ${process.env.AS_TOOK}`,
-                }]
-              }
+            status: ${{ job.status }}
+            fields: all
+            # status: custom
+            # fields: workflow,job,commit,repo,ref,author,took
+            # custom_payload: |
+            #   {
+            #     attachments: [{
+            #       color: 'danger' 
+            #       text: `${process.env.AS_WORKFLOW} failed: {process.env.AS_JOB} (${process.env.AS_COMMIT}) of ${process.env.AS_REPO}@${process.env.AS_REF} by ${process.env.AS_AUTHOR} ${{ job.status }} in ${process.env.AS_TOOK}`,
+            #     }]
+            #   }
         env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
